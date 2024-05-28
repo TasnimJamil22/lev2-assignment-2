@@ -1,4 +1,4 @@
- ## instructions on how to run the application locally:
+ ## Instructions on how to run the application locally:
 
 This application is built with Express.js, Mongoose, Node.js, TypeScript, Joi for input validation, and CORS middleware.
 
