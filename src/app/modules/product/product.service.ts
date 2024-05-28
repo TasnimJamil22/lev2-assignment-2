@@ -1,5 +1,5 @@
-import { ProductModel } from '../product.model';
 import { Product } from './product.interface';
+import { ProductModel } from './product.model';
 
 const createProductIntoDB = async (product: Product) => {
   const result = await ProductModel.create(product);
@@ -24,16 +24,30 @@ const getSingleProductFromDB = async (id: string) => {
   return result;
 };
 
-const updateProductFromDB = async (id: string, updateValue: any) => {
-  // const updateDoc = {
+// types of updated product data
+export type ProductUpdate = {
+  name?: string;
+  description?: string;
+  price?: number;
+  category?: string;
+  tags?: string[];
+  variants?: {
+    type: string;
+    value: string;
+  }[];
+  inventory?: {
+    quantity: number;
+    inStock: boolean;
+  };
+};
 
-  // };
+const updateProductFromDB = async (id: string, updateValue: ProductUpdate) => {
   const result = await ProductModel.findByIdAndUpdate(
     { _id: id },
     {
       $set: {
         name: updateValue.name,
-        descripton: updateValue.description,
+        description: updateValue.description,
         price: updateValue.price,
         category: updateValue.category,
         tags: updateValue.tags,
@@ -41,12 +55,13 @@ const updateProductFromDB = async (id: string, updateValue: any) => {
         inventory: updateValue.inventory,
       },
     },
+    { new: true },
   );
   return result;
 };
 
 const deleteProductFromDB = async (id: string) => {
-  const result = await ProductModel.deleteOne({ _id: id });
+  const result = await ProductModel.deleteOne({ _id: id }, { new: true });
   return result;
 };
 

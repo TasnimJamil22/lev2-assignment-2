@@ -6,6 +6,18 @@ const createOrderIntoDB = async (order: Order) => {
   return result;
 };
 
+const getAllOrdersFromDB = async (email?: string) => {
+  if (email) {
+    const searchRegex = new RegExp(email, 'i');
+    const result = await OrderModel.find({ email: searchRegex });
+    return result;
+  } else {
+    const result = await OrderModel.find();
+    return result;
+  }
+};
+
 export const OrderServices = {
   createOrderIntoDB,
+  getAllOrdersFromDB,
 };

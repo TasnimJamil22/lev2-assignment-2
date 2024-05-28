@@ -12,10 +12,15 @@ app.use(cors());
 //application routes
 app.use('/', ProductRoutes);
 app.use('/', OrderRoutes);
+app.use((req, res) => {
+  res.status(404).json({
+    success: false,
+    message: 'Route not found',
+  });
+});
 
 app.get('/', (req: Request, res: Response) => {
-  const a = 10;
-  res.send(a);
+  res.send(`the application is running`);
 });
 
 export default app;
