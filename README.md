@@ -1,4 +1,4 @@
- #instructions on how to run the application locally:
+ ##instructions on how to run the application locally:
 
 This application is built with Express.js, Mongoose, Node.js, TypeScript, Joi for input validation, and CORS middleware.
 
@@ -6,10 +6,9 @@ This application is built with Express.js, Mongoose, Node.js, TypeScript, Joi fo
 
 1. Clone the repository to your local machine:
 
-    ```bash
+    
     git clone https://github.com/yourusername/lev2-assignment-2.git
-    ```
-
+  
 2. Navigate to the project directory:
 
    
